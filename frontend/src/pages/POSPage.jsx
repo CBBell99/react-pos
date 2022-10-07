@@ -5,12 +5,17 @@ import MainLayout from "../layouts/MainLayout";
 function POSPage() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [cart, setCart] = useState([]);
 
   const fetchProducts = async () => {
     setIsLoading(true);
     const result = await axios.get("products");
     setProducts(await result.data);
     setIsLoading(false);
+  };
+
+  const addProductToCart = async (product) => {
+    console.log(product);
   };
 
   useEffect(() => {
@@ -28,14 +33,18 @@ function POSPage() {
               {" "}
               {products.map((product, key) => (
                 <div key={key} className="col-lg-4">
-                  <div className="border"></div>
-                  <p>{product.name}</p>
-                  <img
-                    src={product.image}
-                    className="img-fluid"
-                    alt={product.name}
-                  />
-                  <p>${product.price}</p>
+                  <div
+                    className="border"
+                    onClick={() => addProductToCart(product)}
+                  >
+                    <p>{product.name}</p>
+                    <img
+                      src={product.image}
+                      className="img-fluid"
+                      alt={product.name}
+                    />
+                    <p>${product.price}</p>
+                  </div>
                 </div>
               ))}
             </div>
