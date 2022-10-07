@@ -1,7 +1,8 @@
 import React from "react";
+import MainLayout from "../layouts/MainLayout";
 
 function POSPage() {
-  return <div>POSPage</div>;
+  return <MainLayout>POS Content</MainLayout>;
 }
 
 export default POSPage;
