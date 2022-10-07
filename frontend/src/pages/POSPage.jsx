@@ -15,7 +15,36 @@ function POSPage() {
   };
 
   const addProductToCart = async (product) => {
-    console.log(product);
+    // check if the added product exists
+    let findProductInCart = await cart.find((i) => {
+      return i.id === product.id;
+    });
+    if (findProductInCart) {
+      let newCart = [];
+      let newItem;
+
+      cart.forEach((cartItem) => {
+        if (cartItem.id == product.id) {
+          newItem = {
+            ...cartItem,
+            quantity: cartItem.quantity + 1,
+            totalAmount: cartItem.price * (cartItem.quantity + 1),
+          };
+          newCart.push(newItem);
+        } else {
+          newCart.push(cartItem);
+        }
+      });
+
+      setCart(newCart);
+    } else {
+      let addedProduct = {
+        ...product,
+        quantity: 1,
+        totalAmount: product.price,
+      };
+      setCart([...cart, addedProduct]);
+    }
   };
 
   useEffect(() => {
