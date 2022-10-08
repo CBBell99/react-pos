@@ -79,7 +79,9 @@ function POSPage() {
             </div>
           )}
         </div>
-        <div className="col-lg-4"></div>
+        <div className="col-lg-4">
+          <div className="table-responsive"></div>
+        </div>
       </div>
     </MainLayout>
   );
