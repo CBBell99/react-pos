@@ -80,7 +80,38 @@ function POSPage() {
           )}
         </div>
         <div className="col-lg-4">
-          <div className="table-responsive"></div>
+          <div className="table-responsive bg-dark">
+            <table className="table table-responsive table-dark table-hover">
+              <thead>
+                <tr>
+                  <d>#</d>
+                  <td>Name</td>
+                  <td>Price</td>
+                  <td>Qty</td>
+                  <td>Total</td>
+                  <td>Action</td>
+                </tr>
+              </thead>
+              <tbody>
+                {cart
+                  ? cart.map((cartProduct, key) => (
+                      <tr>
+                        <td>{cartProduct.id}</td>
+                        <td>{cartProduct.name}</td>
+                        <td>{cartProduct.price}</td>
+                        <td>{cartProduct.quantity}</td>
+                        <td>{cartProduct.totalAmount}</td>
+                        <td>
+                          <button className="btn btn-danger btn-sm">
+                            Remove
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  : "No Item in cart"}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </MainLayout>
