@@ -47,6 +47,11 @@ function POSPage() {
     }
   };
 
+  const removeProduct = async (product) => {
+    const newCart = cart.filter((cartItem) => cartItem.id !== product.id);
+    setCart(newCart);
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -84,7 +89,7 @@ function POSPage() {
             <table className="table table-responsive table-dark table-hover">
               <thead>
                 <tr>
-                  <d>#</d>
+                  <td>#</td>
                   <td>Name</td>
                   <td>Price</td>
                   <td>Qty</td>
@@ -95,14 +100,17 @@ function POSPage() {
               <tbody>
                 {cart
                   ? cart.map((cartProduct, key) => (
-                      <tr>
+                      <tr key={key}>
                         <td>{cartProduct.id}</td>
                         <td>{cartProduct.name}</td>
                         <td>{cartProduct.price}</td>
                         <td>{cartProduct.quantity}</td>
                         <td>{cartProduct.totalAmount}</td>
                         <td>
-                          <button className="btn btn-danger btn-sm">
+                          <button
+                            className="btn btn-danger btn-sm"
+                            onClick={() => removeProduct(cartProduct)}
+                          >
                             Remove
                           </button>
                         </td>
