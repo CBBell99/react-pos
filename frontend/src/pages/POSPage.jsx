@@ -57,6 +57,14 @@ function POSPage() {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    let newTotalAmount = 0;
+    cart.forEach((icart) => {
+      newTotalAmount = newTotalAmount + parseInt(icart.totalAmount);
+    });
+    setTotalAmount(newTotalAmount);
+  }, [cart]);
+
   return (
     <MainLayout>
       <div className="row">
@@ -120,6 +128,7 @@ function POSPage() {
                   : "No Item in cart"}
               </tbody>
             </table>
+            <h2 className="px-2 text-white">Total Amount: ${totalAmount}</h2>
           </div>
         </div>
       </div>
