@@ -9,6 +9,11 @@ function POSPage() {
   const [cart, setCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
+  const toastOptions = {
+    autoClose: 400,
+    pauseOnHover: true,
+  };
+
   const fetchProducts = async () => {
     setIsLoading(true);
     const result = await axios.get("products");
