@@ -29,7 +29,7 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
             : "No Item in Cart"}
         </tbody>
       </table>
-      <h2 className="px-2 text-white">Total Amount: ${totalAmount}</h2>
+      <h2 className="px-2">Total Amount: ${totalAmount}</h2>
     </div>
   );
 });
